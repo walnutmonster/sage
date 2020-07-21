@@ -21,7 +21,7 @@ EXAMPLES::
     Note that many tests not only in this module do not create instances of
     valuations directly since this gives the wrong inheritance structure on
     the resulting objects::
-    
+
         sage: from sage.rings.valuation.valuation_space import DiscretePseudoValuationSpace
         sage: from sage.rings.valuation.trivial_valuation import TrivialDiscretePseudoValuation
         sage: H = DiscretePseudoValuationSpace(QQ)
@@ -30,17 +30,17 @@ EXAMPLES::
         Traceback (most recent call last):
         ...
         AssertionError: False is not true
-    
+
     Instead, the valuations need to be created through the
     ``__make_element_class__`` of the containing space::
-    
+
         sage: from sage.rings.valuation.trivial_valuation import TrivialDiscretePseudoValuation
         sage: v = H.__make_element_class__(TrivialDiscretePseudoValuation)(H)
         sage: v._test_category()
-    
+
     The factories such as ``TrivialPseudoValuation`` provide the right
     inheritance structure::
-    
+
         sage: v = valuations.TrivialPseudoValuation(QQ)
         sage: v._test_category()
 
@@ -52,7 +52,7 @@ EXAMPLES::
 #  as published by the Free Software Foundation; either version 2 of
 #  the License, or (at your option) any later version.
 #                  https://www.gnu.org/licenses/
-# ****************************************************************************
+# ***********************************************************asd asd asd *****************
 from __future__ import absolute_import
 
 from sage.categories.homset import Homset
@@ -184,7 +184,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
     def _repr_(self):
         r"""
         Return a printable representation of this space.
-        
+
         EXAMPLES::
 
             sage: from sage.rings.valuation.valuation_space import DiscretePseudoValuationSpace
@@ -327,7 +327,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
 
                 sage: QQ.valuation(2).is_discrete_valuation()
                 True
-            
+
             """
 
         def is_negative_pseudo_valuation(self):
@@ -395,7 +395,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
                 Traceback (most recent call last):
                 ...
                 ValueError: Trivial valuations do not define a uniformizing element
-                
+
             """
 
         @cached_method
@@ -665,7 +665,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
                 sage: w = v.scale(3)
                 sage: w(3)
                 3
-        
+
             Scaling can also be done through multiplication with a scalar::
 
                 sage: w/3 == v
@@ -780,7 +780,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
             valuation with respect to ``other``.
 
             .. NOTE::
-            
+
                 Overriding this method tends to be a nuisance as you need to
                 handle all possible types (as in Python type) of valuations.
                 This is essentially the same problem that you have when
@@ -826,7 +826,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
             else:
                 # Since n,nn,d,dd are all non-negative this is essentially equivalent to
                 # a/b > d/n and b/a > nn/dd
-                # which is 
+                # which is
                 # dd/nn > a/b > d/n
                 assert(dd/nn > d/n)
                 from sage.rings.continued_fraction import continued_fraction
@@ -849,7 +849,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
                             ab_cf.extend([y,1,1])
                 ab = continued_fraction(ab_cf).value()
                 a,b = ab.numerator(), ab.denominator()
-                
+
             ret = self.domain()(numerator**a / denominator**b)
             assert(self(ret) > 0)
             assert(other(ret) < 0)
@@ -946,7 +946,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
             Produce an element which differs from ``x`` by an element of
             valuation strictly greater than the valuation of ``x`` (or strictly
             greater than ``error`` if set.)
-            
+
             If ``force`` is not set, then expensive simplifications may be avoided.
 
             EXAMPLES::
@@ -1046,7 +1046,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
             coefficients is going to lead to a significant shrinking of the
             coefficients of ``x``.
 
-            EXAMPLES:: 
+            EXAMPLES::
 
                 sage: v = Qp(2).valuation()
                 sage: v._relative_size(2)
@@ -1339,7 +1339,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
 
             """
             tester = self._tester(**options)
-            
+
             if self.is_trivial() and not self.is_discrete_valuation():
                 # the trivial pseudo-valuation does not have a value semigroup
                 return
@@ -1358,7 +1358,7 @@ class DiscretePseudoValuationSpace(UniqueRepresentation, Homset):
 
             """
             tester = self._tester(**options)
-            
+
             if self.is_trivial() and not self.is_discrete_valuation():
                 # the trivial pseudo-valuation does not have a value semigroup
                 return
